@@ -1,6 +1,8 @@
 import random
 def ahorcado():
-    animales = ["perro","gato","condor","conejo","leon","tigre","dinosaurio","caballo"]
+    animales = ["perro","gato","condor","conejo","leon","tigre","dinosaurio",
+    "caballo","burro","mapache","ornitorrinco","cerdo", "jaguar","gorila",
+    "pez","hamster", "leopardo", "raton"]
     # deportes = ["futbol","backetball","volleyball","tennis","natacion","ciclismo"]
     a = random.randint(1,len(animales))
     # d = random.randint(1,len(deportes))
@@ -163,21 +165,23 @@ def ahorcado():
 
             while True:
                 letra = input("Ingrese una letra: ")
+
                 if letra in animal:
-                    print("La letra si se encuentra")
-                    correcta +=1
-                    if correcta > 0:
-                        
-                        index = animal.index(letra)
-                        animalM = list(animalM)
-                        animalM[index] = letra
-                        # animalM = animalM.replace(animalM[index],letra)
-                        print(animalM)
-                        if correcta == len(animal):
-                            print("Ganador Usted es el mejor!!!")
-                            break
+                    for x in range (0,len(animal)):
+                        if letra == animal[x]:
+                            # print("La letra se encuentra: ",x)
+                            animalM = list(animalM)
+                            animalM[x] = letra
+                            correcta +=1
+                    print("-------------------------------")
+                    print("El animal es :", animalM)
+                    if "_" not in animalM:
+                        print("Ganador Usted es el mejor!!!")
+                        break
                 else:
                     print("La letra no se encuentra")
+                    print("-------------------------------")
+                    print("El animal es :", animalM)
                     intentos = intentos - 1
                 
                 if intentos == 7:
